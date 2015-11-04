@@ -70,12 +70,12 @@ if(isset($_REQUEST['submitForm'])){
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
-      <div class="col-md-4" style="margin-top: 25%">
+      <div class="col-md-4" style="margin-top: 25%; margin-left:5%">
       <h4>Handy Link Skipper</h4>
       <form method="post" action="index.php">
-      	<input class="u-full-width" name="shortUrl" value="">
+      	<input class="form-control" name="shortUrl" value="">
       	<input type="hidden" name="submitForm" value="true">
-      	<button class="btn btn-primary" type="submit">GO</button>
+      	<button class="btn btn-success" type="submit">GO</button>
       </form>
       
       <br>
