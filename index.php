@@ -1,6 +1,5 @@
 <?php
 
-
 if(isset($_REQUEST['submitForm'])){
 	$v = preg_match('@^(?:http://)?([^/]+)@i',$_REQUEST['shortUrl'], $matches);
 	$host = $matches[1];
@@ -28,8 +27,6 @@ if(isset($_REQUEST['submitForm'])){
 		header("Location: " . $blee);
 	}	
 }
-
-
 
 ?> 
 
