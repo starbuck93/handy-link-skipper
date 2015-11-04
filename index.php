@@ -77,6 +77,17 @@ if(isset($_REQUEST['submitForm'])){
       	<input type="hidden" name="submitForm" value="true">
       	<button class="primary" type="submit">GO</button>
       </form>
+      <br>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <p>Instructions: Paste a sh.st link (like this one: http://sh.st/bKeWP) into the box and hit go. (You can also paste any.gs links.)</p>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>
@@ -85,6 +96,7 @@ if(isset($_REQUEST['submitForm'])){
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   
  <!-- Latest compiled and minified JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 
 </body>
