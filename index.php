@@ -57,8 +57,8 @@ if(isset($_REQUEST['submitForm'])){
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
   <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous"
+  
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– 
   <link rel="icon" type="image/png" href="images/favicon.png">-->
@@ -71,7 +71,8 @@ if(isset($_REQUEST['submitForm'])){
   <div class="container">
     <div class="row">
       <div class="col-md-4" style="margin-top: 25%; margin-left:5%">
-      <h4>Handy Link Skipper</h4>
+      <h3>Handy Link Skipper</h3>
+      <br>
       <form class="form-inline" method="post" action="index.php">
         
         <div class="form-group">
