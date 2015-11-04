@@ -72,17 +72,22 @@ if(isset($_REQUEST['submitForm'])){
     <div class="row">
       <div class="col-md-4" style="margin-top: 25%; margin-left:5%">
       <h4>Handy Link Skipper</h4>
-      <form method="post" action="index.php">
-      	<input class="form-control" name="shortUrl" value="">
-      	<input type="hidden" name="submitForm" value="true">
-      	<button class="btn btn-success" type="submit">GO</button>
+      <form class="form-inline" method="post" action="index.php">
+        
+        <div class="form-group">
+          <input type="hidden" name="submitForm" value="true">
+          <input class="form-control" name="shortUrl" value="" placeholder="sh.st link">
+        </div>
+        
+        <button class="btn btn-success" type="submit">GO</button>
+        
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+         Instructions
+       </button>
+      	
       </form>
       
       <br>
-        
-       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-         Instructions
-       </button>
         
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
