@@ -1,32 +1,30 @@
 <?php
 
-if(isset($_REQUEST['submitForm'])){
-	$v = preg_match('@^(?:http://)?([^/]+)@i',$_REQUEST['shortUrl'], $matches);
-	$host = $matches[1];
-	// echo "Host: " . $host ."\n";
-		
-	// echo $host . "\n";
-	if ($host == "www.any.gs") {
-		$google = substr($_REQUEST['shortUrl'], strpos($_REQUEST['shortUrl'],"url/")+4);
-		// echo $google . "\n";
-		header("Location: " . $google);
-	}
-
-	else {
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $_REQUEST['shortUrl']);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		$result = curl_exec($ch);
-		curl_close($ch);	
-		$needle1="<title>Redirecting to ";  	
-		$needle2="</title>";  	
-		$pos1 = strpos($result, $needle1);
-		$pos1 = $pos1+22;
-		$pos2 = strpos($result, $needle2);
-		$blee = substr($result, $pos1,$pos2-$pos1);
-		header("Location: " . $blee);
-	}	
-}
+  if(isset($_REQUEST['submitForm'])){
+    $v = preg_match('@^(?:http://)?([^/]+)@i',$_REQUEST['shortUrl'], $matches); //need to add https
+    $host = $matches[1];    
+    if ($host == "www.any.gs") {
+      $location = substr($_REQUEST['shortUrl'], strpos($_REQUEST['shortUrl'],"url/")+4);
+      header("Location: " . $location);
+    }
+    else if($host == "sh.st") {
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $_REQUEST['shortUrl']);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $result = curl_exec($ch);
+      curl_close($ch);  
+      $needle1="<title>Redirecting to ";    
+      $needle2="</title>";    
+      $pos1 = strpos($result, $needle1);
+      $pos1 = $pos1+22;
+      $pos2 = strpos($result, $needle2);
+      $location = substr($result, $pos1,$pos2-$pos1);
+      header("Location: " . $location);
+    }
+    else {
+      header("Location: " . $_REQUEST['shortUrl']);
+    } 
+  }
 
 ?> 
 
@@ -34,35 +32,17 @@ if(isset($_REQUEST['submitForm'])){
 <html lang="en">
 <head>
 
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>Handy Link Skipper</title>
   <meta name="description" content="Skips sh.st links">
   <meta name="author" content="starbuckstech.com">
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
-  
-  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-  <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous"
+  <link rel="icon" type="image/png" href="images/favicon.png">
   
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– 
-  <link rel="icon" type="image/png" href="images/favicon.png">-->
-
 </head>
 <body>
 
@@ -82,23 +62,23 @@ if(isset($_REQUEST['submitForm'])){
         
         <button class="btn btn-success" type="submit">GO</button>
         
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#instructions">
          Instructions
        </button>
-      	
+        
       </form>
       
       <br>
         
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="instructions" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Instructions</h4>
+                <h4 class="modal-title" id="ModalLabel">Instructions</h4>
               </div>
               <div class="modal-body">
-                <p>Instructions: Paste a sh.st link (like this one: http://sh.st/bKeWP) into the box and hit go. (You can also paste any.gs links.)</p>
+                <p>Instructions: Paste a sh.st link (like this one: http://sh.st/bKeWP) into the box and hit go. (You can also paste any.gs links.) </p> <p>Any other links will simply be forwared to the link.</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
